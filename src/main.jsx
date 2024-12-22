@@ -6,6 +6,8 @@ import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import AllBooks from "./pages/AllBooks";
 import UpdateBook from "./pages/UpdateBook";
+import BookDetails from "./pages/BookDetails";
+import AddBook from "./pages/AddBook";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -42,6 +44,21 @@ const router = createBrowserRouter([
   path: "update-book",
   element: <UpdateBook />,
 },
+{
+  path: "update-book/:bookId",
+  element: <UpdateBook />,
+}, 
+{
+  path: "book-details/:bookId",
+  element: <BookDetails />,
+},
+
+{
+  path: "add-book",
+  element: <AddBook />,
+},
+
+
 
 ]);
 
