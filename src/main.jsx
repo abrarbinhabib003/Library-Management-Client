@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import AllBooks from "./pages/AllBooks";
+import UpdateBook from "./pages/UpdateBook";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
 ,{
   path: "all-books",
   element: <AllBooks />,
+},
+
+{
+  path: "update-book",
+  element: <UpdateBook />,
 },
 
 ]);
