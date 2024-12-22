@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
+import AllBooks from "./pages/AllBooks";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -31,7 +32,10 @@ const router = createBrowserRouter([
   path: "*",
   element: <ErrorPage />,
 }
-
+,{
+  path: "all-books",
+  element: <AllBooks />,
+},
 
 ]);
 
