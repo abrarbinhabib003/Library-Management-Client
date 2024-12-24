@@ -9,12 +9,16 @@ import UpdateBook from "./pages/UpdateBook";
 import BookDetails from "./pages/BookDetails";
 import AddBook from "./pages/AddBook";
 import BorrowedBooks from "./pages/BorrowedBooks";
+import Categories from "./components/Categories";
+import BookCategories from "./components/BookCategories";
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
+
 
 const router = createBrowserRouter([
   {
@@ -63,6 +67,15 @@ const router = createBrowserRouter([
   path: "borrowed-books",
   element: <BorrowedBooks />,
 },
+
+{
+  path: "categories",
+  element: <Categories />,
+},
+{
+  path: "categories/:category",
+  element: <BookCategories />,
+}
 
 ]);
 

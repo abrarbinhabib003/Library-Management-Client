@@ -9,6 +9,7 @@ const UpdateBook = () => {
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
   const [rating, setRating] = useState(1);
+  const [error, setError] = useState(''); 
   const navigate = useNavigate();
   const { bookId } = useParams();
 
@@ -23,7 +24,10 @@ const UpdateBook = () => {
         setCategory(data.category || 'Fiction');
         setRating(data.rating || 1);
       })
-      .catch((error) => console.error('Error fetching book details:', error));
+      .catch((error) => {
+        console.error('Error fetching book details:', error.message);
+        setError('Failed to fetch book details. Please try again.');
+      });
   }, [bookId]);
 
   const handleSubmit = (e) => {
@@ -37,16 +41,21 @@ const UpdateBook = () => {
       rating,
     };
 
-    axiosInstance.put(`/books/${bookId}`, updatedBook)
+    axiosInstance.put(`/books/update/${bookId}`, updatedBook)
       .then(() => {
-        navigate('/all-books'); 
+        console.log('Book successfully updated:', updatedBook);
+        navigate('/all-books');
       })
-      .catch((error) => console.error('Error updating book:', error));
+      .catch((error) => {
+        console.error('Error updating book:', error.message);
+        setError('Failed to update book. Please check your input and try again.');
+      });
   };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Update Book</h1>
+      {error && <p className="text-red-500">{error}</p>} 
       {book ? (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">
