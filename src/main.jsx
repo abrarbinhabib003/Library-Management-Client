@@ -24,7 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
-  },
+
+    children: [
+      
+  
 
 {
     path: "/login",
@@ -76,6 +79,9 @@ const router = createBrowserRouter([
   path: "categories/:category",
   element: <BookCategories />,
 }
+
+    ]
+  } 
 
 ]);
 

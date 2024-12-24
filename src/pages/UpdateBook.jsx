@@ -21,7 +21,7 @@ const UpdateBook = () => {
         setImage(data.coverImage || '');
         setTitle(data.title || '');
         setAuthor(data.author || '');
-        setCategory(data.category || 'Fiction');
+        setCategory(data.category || 'Novel');
         setRating(data.rating || 1);
       })
       .catch((error) => {
@@ -97,10 +97,11 @@ const UpdateBook = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="fiction">Fiction</option>
-              <option value="non-fiction">Non-fiction</option>
-              <option value="mystery">Mystery</option>
-              <option value="romance">Romance</option>
+              <option value="Novel">Novel</option>
+              <option value="Thriller">Thriller</option>
+              <option value="History">History</option>
+              <option value="Drama">Drama</option>
+              <option value="Sci-Fi">Sci-Fi</option>
             </select>
           </div>
           <div className="form-control">
