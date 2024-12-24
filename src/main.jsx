@@ -11,6 +11,7 @@ import AddBook from "./pages/AddBook";
 import BorrowedBooks from "./pages/BorrowedBooks";
 import Categories from "./components/Categories";
 import BookCategories from "./components/BookCategories";
+import Home from "./pages/Home";
 
 import {
   createBrowserRouter,
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
 
     children: [
       
-  
+  {
+    path: "/",
+    element: <Home />,
+  },
 
 {
     path: "/login",
