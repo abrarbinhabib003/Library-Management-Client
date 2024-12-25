@@ -3,19 +3,16 @@ import { auth } from "../firebase/firebase.config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { PuffLoader } from "react-spinners";
 
-
+// Create context
 export const AuthContext = createContext();
 
-
+// Custom hook for consuming context
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-
 export const AuthProvider = ({ children }) => {
-
   const [user, setUser] = useState(null);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,10 +21,8 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     });
 
-
     return () => unsubscribe();
   }, []);
-
 
   const logout = async () => {
     try {
@@ -37,16 +32,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-
   return (
     <AuthContext.Provider value={{ user, logout, loading }}>
       {loading ? (
-      
         <div className="flex justify-center items-center min-h-screen">
           <PuffLoader color="#3498db" size={60} />
         </div>
       ) : (
-      
         children
       )}
     </AuthContext.Provider>

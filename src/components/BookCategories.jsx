@@ -1,11 +1,12 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import ReactStars from 'react-rating-stars-component'; 
+import ReactStars from 'react-rating-stars-component';
 
 const BookCategories = () => {
-  const { category } = useParams(); 
+  const { category } = useParams();
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     if (category) {
@@ -18,15 +19,19 @@ const BookCategories = () => {
           console.error("Error fetching books:", error);
         });
     }
-  }, [category]); 
+  }, [category]);
+
+  const handleDetailsClick = (bookId) => {
+    navigate(`/books/${bookId}`);  // Redirect to the book details page
+  };
 
   return (
     <div>
       <h2>Books in {category} category</h2>
       <div className="book-list">
         {books.map((book) => (
-          <div key={book.id} className="book-card">
-            <img src={book.image} alt={book.title} className="book-image" />
+          <div key={book._id} className="book-card"> {/* Use _id instead of id for MongoDB */}
+            <img src={book.imageLink} alt={book.title} className="book-image" />
             <h3>{book.title}</h3>
             <p><strong>Author:</strong> {book.author}</p>
             <p><strong>Category:</strong> {book.category}</p>
@@ -41,7 +46,7 @@ const BookCategories = () => {
                 activeColor="#ffd700"
               />
             </div>
-            <button onClick={() => alert(`More details about ${book.title}`)}>Details</button>
+            <button onClick={() => handleDetailsClick(book._id)}>Details</button>
           </div>
         ))}
       </div>
