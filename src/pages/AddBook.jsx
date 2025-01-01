@@ -10,71 +10,67 @@ const AddBook = () => {
   const [category, setCategory] = useState('Novel');  
   const [rating, setRating] = useState(1);  
 
+  
   const handleAddBook = (e) => {
     e.preventDefault();
-
+  
     if (!title || !author || !description || !imageLink || !category || !rating) {
       alert('All fields are required');
       return;
     }
-
+  
     const bookData = {
       title,
       author,
       description,
       quantity,
       imageLink,
-      category,  
-      rating,    
+      category,
+      rating,
     };
+  
 
-    
-    axiosInstance.post('/books/add', bookData)
-  .then(() => {
-    setTitle('');
-    setAuthor('');
-    setDescription('');
-    setQuantity(1);
-    setImageLink('');
-    setCategory('Novel');  
-    setRating(1);         
-    alert('Book added successfully!');
-  })
-  .catch((error) => {
-    if (error.response) {
+    console.log('Sending book data:', bookData);
+  
 
-      console.error('Error response:', {
-        status: error.response.status,
-        data: error.response.data,
-        headers: error.response.headers,
+    const token = localStorage.getItem('token'); 
+    console.log('Authorization token:', token);
+  
+    axiosInstance
+      .post('/books/add', bookData, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      })
+      .then(() => {
+
+        setTitle('');
+        setAuthor('');
+        setDescription('');
+        setQuantity(1);
+        setImageLink('');
+        setCategory('Novel');
+        setRating(1);
+        alert('Book added successfully!');
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error('Error response:', {
+            status: error.response.status,
+            data: error.response.data,
+            headers: error.response.headers,
+          });
+          alert(`Error: ${error.response.data.message || 'Failed to add book.'}`);
+        } else if (error.request) {
+          console.error('Error request:', error.request);
+          alert('Error: No response from the server.');
+        } else {
+          console.error('Error message:', error.message);
+          alert('Error: Failed to send request.');
+        }
       });
-      alert(`Error: ${error.response.data.message || 'Failed to add book.'}`);
-    } else if (error.request) {
-
-      console.error('Error request:', error.request);
-      alert('Error: No response from the server.');
-    } else {
-
-      console.error('Error message:', error.message);
-      alert('Error: Failed to send request.');
-    }
-  });
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   };
-
+  
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">Add a New Book</h1>

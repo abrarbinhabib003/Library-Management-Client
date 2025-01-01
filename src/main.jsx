@@ -20,79 +20,26 @@ import {
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
-
+    element: <Root />,
     children: [
-      
-  {
-    path: "/",
-    element: <Home />,
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+      { path: "/all-books", element: <AllBooks /> },
+      { path: "update-book/:bookId", element: <UpdateBook /> },
+      { path: "books/:bookId", element: <BookDetails /> },
+      { path: "add-book", element: <AddBook /> },
+      { path: "borrowed-books", element: <BorrowedBooks /> },
+      { path: "categories", element: <Categories /> },
+      { path: "categories/:category", element: <BookCategories /> },
+      { path: "*", element: <ErrorPage /> }, // Keep wildcard last
+    ],
   },
-
-{
-    path: "/login",
-    element: <Login />,
-},
-
-{
-    path: "/register",
-    element: <Register />,
-},
-
-{
-  path: "*",
-  element: <ErrorPage />,
-}
-,{
-  path: "all-books",
-  element: <AllBooks />,
-},
-
-{
-  path: "update-book",
-  element: <UpdateBook />,
-},
-{
-  path: "update-book/:bookId",
-  element: <UpdateBook />,
-}, 
-{
-  path: "books/:bookId",
-  element: <BookDetails />,
-},
-
-{
-  path: "add-book",
-  element: <AddBook />,
-},
-
-{
-  path: "borrowed-books",
-  element: <BorrowedBooks />,
-},
-
-{
-  path: "categories",
-  element: <Categories />,
-},
-{
-  path: "categories/:category",
-  element: <BookCategories />,
-},
-
-{
-  path: "book-details/:bookId",
-  element: <BookDetails />,
-}
-
-    ]
-  } 
-
 ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

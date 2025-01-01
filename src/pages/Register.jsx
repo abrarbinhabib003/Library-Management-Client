@@ -10,7 +10,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [photoURL, setPhotoURL] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const validatePassword = (password) => {
@@ -30,7 +30,7 @@ const Register = () => {
       return;
     }
 
-    setIsLoading(true); 
+    setIsLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       Swal.fire({
@@ -46,18 +46,17 @@ const Register = () => {
         text: error.message,
       });
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
   const handleGoogleRegister = async () => {
-    setIsLoading(true); 
     try {
       await signInWithPopup(auth, googleProvider);
       Swal.fire({
         icon: 'success',
         title: 'Google Registration Successful!',
-        text: 'Welcome to Library Management!',
+        text: 'Welcome aboard!',
       });
       navigate('/');
     } catch (error) {
@@ -66,116 +65,66 @@ const Register = () => {
         title: 'Google Registration Failed!',
         text: error.message,
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 my-12">
-      {isLoading && (
-        <div className="absolute z-50 flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
-          <div className="text-center">
-            <div className="spinner-border animate-spin inline-block w-10 h-10 border-4 rounded-full border-blue-500"></div>
-            <p className="text-white mt-4">Registering your account... Please wait.</p>
-          </div>
-        </div>
-      )}
-
-      <div className="text-center mb-6">
-        <h1 className="text-4xl font-bold text-blue-600 mb-2">
-          <Typewriter
-            options={{
-              strings: ['Welcome to Library Management!', 'Create Your Account'],
-              autoStart: true,
-              loop: true,
-            }}
-          />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 px-4">
+      <div className="bg-white shadow-lg rounded-lg w-full sm:w-96 p-6 my-12">
+        <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">
+          Register Your Account
         </h1>
-        <p className="text-lg text-gray-700 mb-4">
-          A simple and secure way to access your account. Follow the steps below to register.
+        <p className="text-center text-red-600 mb-6">
+          Please enter your details to create an account.
         </p>
-      </div>
 
-      <div className="bg-white shadow-lg rounded-lg w-full sm:w-96 p-6">
         <form className="space-y-4" onSubmit={handleRegister}>
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="name" className="text-sm font-medium text-gray-600">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              placeholder="Enter your full name"
-              className="input input-bordered w-full"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-gray-600">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email address"
-              className="input input-bordered w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="photoURL" className="text-sm font-medium text-gray-600">
-              Profile Picture (Optional)
-            </label>
-            <input
-              type="url"
-              id="photoURL"
-              placeholder="Enter a photo URL (Optional)"
-              className="input input-bordered w-full"
-              value={photoURL}
-              onChange={(e) => setPhotoURL(e.target.value)}
-            />
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <label htmlFor="password" className="text-sm font-medium text-gray-600">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              className="input input-bordered w-full"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <p className="text-xs text-orange-500 animate-bounce">
-              Password must include at least one uppercase letter, one lowercase letter, and be at least 6 characters long.
-            </p>
-          </div>
-
-          <button type="submit" className="btn btn-primary w-full">
-            Register
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="w-full bg-lime-400 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Register'}
           </button>
         </form>
 
-        <button onClick={handleGoogleRegister} className="btn btn-error w-full mt-4">
-          <FaGoogle className="mr-2" />
-          Register with Google
+        <button
+          onClick={handleGoogleRegister}
+          className="w-full bg-orange-600 text-black py-2 mt-4 rounded-md hover:bg-red-600 focus:outline-none"
+        >
+          <div className="flex items-center justify-center space-x-2">
+            <FaGoogle className="text-lg" />
+            <span className="font-semibold">Register with Google</span>
+          </div>
         </button>
 
         <p className="mt-4 text-center text-sm text-gray-500">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-500 font-semibold">
-            Login
-          </a>
+          <a href="/login" className="text-blue-500 font-semibold">Login</a>
         </p>
       </div>
     </div>

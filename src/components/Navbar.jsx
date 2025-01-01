@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext"; // Context for managing user authentication
+import { useAuth } from "../context/AuthContext"; // Use useAuth to access the context
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext); // Assuming AuthContext provides user details and a logout function
+  const { user, logout } = useAuth();  // Use the hook to get user and logout
 
   return (
     <nav className="bg-gray-800 text-white shadow-md">
