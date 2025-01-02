@@ -13,12 +13,11 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-  
         <Link to="/" className="text-2xl font-bold">
           BookHaven
         </Link>
 
-
+   
         <button
           onClick={toggleMenu}
           className="lg:hidden text-white focus:outline-none"
@@ -39,7 +38,7 @@ const Navbar = () => {
           </svg>
         </button>
 
-
+       
         <div className="hidden lg:flex items-center space-x-6">
           <NavLink
             to="/"
@@ -100,9 +99,9 @@ const Navbar = () => {
                   alt={user.displayName || "User"}
                   className="w-10 h-10 rounded-full cursor-pointer"
                 />
-                <div className="absolute left-0 mt-2 hidden bg-gray-700 text-white text-sm rounded px-4 py-2 group-hover:block">
+                <span className="absolute bottom-0 left-0 right-0 px-2 py-1 text-lg text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity">
                   {user.displayName}
-                </div>
+                </span>
               </div>
               <button
                 onClick={logout}
@@ -152,6 +151,7 @@ const Navbar = () => {
               Borrowed Books
             </NavLink>
 
+ 
             <div className="mt-4">
               {!user ? (
                 <>

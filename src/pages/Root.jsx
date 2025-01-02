@@ -3,6 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import DynamicTitle from '../components/DynamicTitle';
 
 
 
@@ -15,7 +16,7 @@ const Root = () => {
 
       <Navbar />
 
-
+      <DynamicTitle />
       <div className="main-content">
    
         <Outlet />

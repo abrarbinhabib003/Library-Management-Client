@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import axiosInstance from '../utils/api'; 
+import axiosInstance from '../utils/api';
+import Swal from 'sweetalert2';  
 
 const AddBook = () => {
   const [title, setTitle] = useState('');
@@ -7,18 +8,24 @@ const AddBook = () => {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [imageLink, setImageLink] = useState('');
-  const [category, setCategory] = useState('Novel');  
-  const [rating, setRating] = useState(1);  
+  const [category, setCategory] = useState('Novel');
+  const [rating, setRating] = useState(1);
+  const [loading, setLoading] = useState(false);  
 
-  
   const handleAddBook = (e) => {
     e.preventDefault();
-  
+
+
     if (!title || !author || !description || !imageLink || !category || !rating) {
-      alert('All fields are required');
+      Swal.fire({
+        title: 'Oops!',
+        text: 'All fields are required.',
+        icon: 'warning',
+        confirmButtonText: 'Okay'
+      });
       return;
     }
-  
+
     const bookData = {
       title,
       author,
@@ -28,22 +35,19 @@ const AddBook = () => {
       category,
       rating,
     };
-  
 
-    // console.log('Sending book data:', bookData);
-  
+    const token = localStorage.getItem('token');
 
-    const token = localStorage.getItem('token'); 
-    // console.log('Authorization token:', token);
-  
+    setLoading(true);  
+
     axiosInstance
       .post('/books/add', bookData, {
         headers: {
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       })
       .then(() => {
-
+      
         setTitle('');
         setAuthor('');
         setDescription('');
@@ -51,26 +55,42 @@ const AddBook = () => {
         setImageLink('');
         setCategory('Novel');
         setRating(1);
-        alert('Book added successfully!');
+        setLoading(false);  
+
+        Swal.fire({
+          title: 'Success!',
+          text: 'Book added successfully!',
+          icon: 'success',
+          confirmButtonText: 'Great!'
+        });
       })
       .catch((error) => {
+        setLoading(false);  
         if (error.response) {
-          console.error('Error response:', {
-            status: error.response.status,
-            data: error.response.data,
-            headers: error.response.headers,
+          Swal.fire({
+            title: 'Error!',
+            text: error.response.data.message || 'Failed to add book.',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
           });
-          alert(`Error: ${error.response.data.message || 'Failed to add book.'}`);
         } else if (error.request) {
-          console.error('Error request:', error.request);
-          alert('Error: No response from the server.');
+          Swal.fire({
+            title: 'Error!',
+            text: 'No response from the server.',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          });
         } else {
-          console.error('Error message:', error.message);
-          alert('Error: Failed to send request.');
+          Swal.fire({
+            title: 'Error!',
+            text: 'An unexpected error occurred.',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          });
         }
       });
   };
-  
+
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">Add a New Book</h1>
@@ -134,7 +154,6 @@ const AddBook = () => {
           />
         </div>
 
- 
         <div>
           <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
           <select
@@ -151,7 +170,6 @@ const AddBook = () => {
           </select>
         </div>
 
-
         <div>
           <label htmlFor="rating" className="block text-sm font-medium text-gray-700">Rating</label>
           <input
@@ -165,13 +183,14 @@ const AddBook = () => {
           />
         </div>
 
-
-        <div className="mt-4 text-gray-600">
-          <p>This is where you would display additional information about the book.</p>
-        </div>
-
         <div className="mt-6 flex justify-center">
-          <button type="submit" className="btn btn-primary">Add Book</button>
+          <button
+            type="submit"
+            className={`btn btn-primary ${loading ? 'loading' : ''}`}  
+            disabled={loading}
+          >
+            {loading ? 'Adding Book...' : 'Add Book'}
+          </button>
         </div>
       </form>
     </div>

@@ -16,7 +16,6 @@ const UpdateBook = () => {
   const navigate = useNavigate();
   const { bookId } = useParams();
 
-
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -55,8 +54,6 @@ const UpdateBook = () => {
     try {
       setIsLoading(true);
       const response = await axiosInstance.put(`/books/${bookId}`, updatedBook);
-      // console.log('Book updated successfully:', response.data);
-
 
       Swal.fire({
         icon: 'success',
@@ -73,61 +70,65 @@ const UpdateBook = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-8">
+        <div className="w-16 h-16 border-4 border-t-4 border-blue-500 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-red-500">{error}</div>;
+  }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Update Book</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="image" className="block text-sm font-medium">
-            Image URL
-          </label>
+    <div className="container mx-auto p-6 max-w-2xl bg-white rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold text-center mb-6">Update Book</h1>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="form-control">
+          <label htmlFor="image" className="block text-sm font-medium mb-2">Image URL</label>
           <input
             type="url"
             id="image"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-            className="w-full border border-gray-300 rounded px-2 py-1"
+            className="input input-bordered w-full"
             required
           />
         </div>
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium">
-            Title
-          </label>
+
+        <div className="form-control">
+          <label htmlFor="title" className="block text-sm font-medium mb-2">Title</label>
           <input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full border border-gray-300 rounded px-2 py-1"
+            className="input input-bordered w-full"
             required
           />
         </div>
-        <div>
-          <label htmlFor="author" className="block text-sm font-medium">
-            Author
-          </label>
+
+        <div className="form-control">
+          <label htmlFor="author" className="block text-sm font-medium mb-2">Author</label>
           <input
             type="text"
             id="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="w-full border border-gray-300 rounded px-2 py-1"
+            className="input input-bordered w-full"
             required
           />
         </div>
-        <div>
-          <label htmlFor="category" className="block text-sm font-medium">
-            Category
-          </label>
+
+        <div className="form-control">
+          <label htmlFor="category" className="block text-sm font-medium mb-2">Category</label>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full border border-gray-300 rounded px-2 py-1"
+            className="select select-bordered w-full"
           >
             <option value="Novel">Novel</option>
             <option value="Thriller">Thriller</option>
@@ -136,10 +137,9 @@ const UpdateBook = () => {
             <option value="Sci-Fi">Sci-Fi</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="rating" className="block text-sm font-medium">
-            Rating (1-5)
-          </label>
+
+        <div className="form-control">
+          <label htmlFor="rating" className="block text-sm font-medium mb-2">Rating (1-5)</label>
           <ReactStars
             count={5}  
             value={rating}  
@@ -148,11 +148,12 @@ const UpdateBook = () => {
             activeColor="#ffd700"  
           />
         </div>
+
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="btn btn-primary w-full mt-4"
         >
-          Update Book
+          {isLoading ? 'Updating...' : 'Update Book'}
         </button>
       </form>
     </div>
