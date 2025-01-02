@@ -12,6 +12,7 @@ import BorrowedBooks from "./pages/BorrowedBooks";
 import Categories from "./components/Categories";
 import BookCategories from "./components/BookCategories";
 import Home from "./pages/Home";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import {
   createBrowserRouter,
@@ -28,14 +29,23 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      { path: "/all-books", element: <AllBooks /> },
+      { 
+        path: "/all-books", 
+        element: <ProtectedRoute><AllBooks /></ProtectedRoute> 
+      },
       { path: "update-book/:bookId", element: <UpdateBook /> },
       { path: "books/:bookId", element: <BookDetails /> },
-      { path: "add-book", element: <AddBook /> },
-      { path: "borrowed-books", element: <BorrowedBooks /> },
+      { 
+        path: "add-book", 
+        element: <ProtectedRoute><AddBook /></ProtectedRoute> 
+      },
+      { 
+        path: "borrowed-books", 
+        element: <ProtectedRoute><BorrowedBooks /></ProtectedRoute> 
+      },
       { path: "categories", element: <Categories /> },
       { path: "categories/:category", element: <BookCategories /> },
-      { path: "*", element: <ErrorPage /> }, // Keep wildcard last
+      { path: "*", element: <ErrorPage /> }, 
     ],
   },
 ]);
@@ -44,8 +54,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
-        </AuthProvider>
-   
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
