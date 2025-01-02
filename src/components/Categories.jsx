@@ -14,11 +14,11 @@ const Categories = () => {
             key={category}
             className="category-card bg-base-100 shadow-xl rounded-lg p-4 flex flex-col items-center text-center"
           >
-            <img
-              src={`${category}.jpg`}
-              alt={category}
-              className="w-full h-32 object-cover rounded-md mb-4"
-            />
+           
+           
+           
+           
+           
             <h3 className="text-xl font-semibold mb-2">{category}</h3>
             <button
               className="btn btn-primary"

@@ -18,7 +18,7 @@ const BookCategories = () => {
     if (category) {
       setLoading(true); 
       axios
-        .get(`http://localhost:5000/api/books?category=${category}`)
+        .get(`https://library-management-backend-beta.vercel.app/api/books?category=${category}`)
         .then((response) => {
           setBooks(response.data);
           setLoading(false); 

@@ -55,7 +55,7 @@ const UpdateBook = () => {
     try {
       setIsLoading(true);
       const response = await axiosInstance.put(`/books/${bookId}`, updatedBook);
-      console.log('Book updated successfully:', response.data);
+      // console.log('Book updated successfully:', response.data);
 
 
       Swal.fire({

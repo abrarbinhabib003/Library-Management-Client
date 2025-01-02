@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
              
                 const token = await user.getIdToken();
                 try {
-                    const res = await axios.post('http://localhost:5000/api/auth/google-login', { idToken: token }, { withCredentials: true });
+                    const res = await axios.post('https://library-management-backend-beta.vercel.app/api/auth/google-login', { idToken: token }, { withCredentials: true });
                     setUser(res.data.user);
                 } catch (err) {
                     console.error('Error fetching user data:', err);
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
     
             const token = await user.getIdToken();
-            await axios.post('http://localhost:5000/api/auth/google-login', { idToken: token }, { withCredentials: true });
+            await axios.post('https://library-management-backend-beta.vercel.app/api/auth/google-login', { idToken: token }, { withCredentials: true });
 
             setUser(user);
         } catch (error) {
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
      
             const token = await user.getIdToken();
-            await axios.post('http://localhost:5000/api/auth/login', { email, password }, { withCredentials: true });
+            await axios.post('https://library-management-backend-beta.vercel.app/api/auth/login', { email, password }, { withCredentials: true });
 
             setUser(user);
         } catch (error) {
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
             const user = result.user;
 
      
-            const res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password, photoURL }, { withCredentials: true });
+            const res = await axios.post('https://library-management-backend-beta.vercel.app/api/auth/register', { name, email, password, photoURL }, { withCredentials: true });
 
             setUser(user);
         } catch (error) {
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
         try {
             await signOut(auth);
             setUser(null);
-            await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+            await axios.post('https://library-management-backend-beta.vercel.app/api/auth/logout', {}, { withCredentials: true });
         } catch (error) {
             console.error('Logout error:', error);
         }

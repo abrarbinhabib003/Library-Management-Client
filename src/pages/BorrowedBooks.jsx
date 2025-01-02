@@ -18,7 +18,7 @@ const BorrowedBooks = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/borrow', {
+        const response = await axios.get('https://library-management-backend-beta.vercel.app/api/borrow', {
           params: { email: user.email },
         });
 
@@ -33,7 +33,7 @@ const BorrowedBooks = () => {
           response.data.map(async (borrowedBook) => {
             try {
               const bookResponse = await axios.get(
-                `http://localhost:5000/api/books/${borrowedBook.bookId}`
+                `https://library-management-backend-beta.vercel.app/api/books/${borrowedBook.bookId}`
               );
               return { ...borrowedBook, book: bookResponse.data };
             } catch (error) {
@@ -62,7 +62,7 @@ const BorrowedBooks = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/borrow/${id}`);
+      await axios.delete(`https://library-management-backend-beta.vercel.app/api/borrow/${id}`);
       setBorrowedBooks(borrowedBooks.filter((book) => book.bookId !== id));
       toast.success('Book returned successfully!');
     } catch (error) {

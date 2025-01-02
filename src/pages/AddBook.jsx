@@ -30,11 +30,11 @@ const AddBook = () => {
     };
   
 
-    console.log('Sending book data:', bookData);
+    // console.log('Sending book data:', bookData);
   
 
     const token = localStorage.getItem('token'); 
-    console.log('Authorization token:', token);
+    // console.log('Authorization token:', token);
   
     axiosInstance
       .post('/books/add', bookData, {

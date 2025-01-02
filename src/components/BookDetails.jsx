@@ -16,13 +16,13 @@ const BookDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Fetching user token...");
+    // console.log("Fetching user token...");
     if (user) {
       const auth = getAuth();
       auth.currentUser
         ?.getIdToken()
         .then((idToken) => {
-          console.log("Token fetched successfully:", idToken);
+          // console.log("Token fetched successfully:", idToken);
           setToken(idToken);
         })
         .catch((error) => {
@@ -40,11 +40,11 @@ const BookDetails = () => {
       return;
     }
 
-    console.log(`Fetching book details for Book ID: ${bookId}`);
+    // console.log(`Fetching book details for Book ID: ${bookId}`);
     axios
-      .get(`http://localhost:5000/api/books/${bookId}`)
+      .get(`https://library-management-backend-beta.vercel.app/api/books/${bookId}`)
       .then((response) => {
-        console.log("Book details fetched successfully:", response.data);
+        // console.log("Book details fetched successfully:", response.data);
         setBook(response.data);
       })
       .catch((error) => {
@@ -54,7 +54,7 @@ const BookDetails = () => {
   }, [bookId]);
 
   const handleBorrow = () => {
-    console.log("Borrow button clicked");
+    // console.log("Borrow button clicked");
     if (!user) {
       alert("You must be logged in to borrow a book.");
       return;
@@ -64,7 +64,7 @@ const BookDetails = () => {
 
   const handleBorrowSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting borrow request...");
+    // console.log("Submitting borrow request...");
 
   
     if (!user) {
@@ -77,7 +77,7 @@ const BookDetails = () => {
       const auth = getAuth();
       auth.currentUser?.getIdToken()
         .then((idToken) => {
-          console.log("Token fetched successfully:", idToken);
+          // console.log("Token fetched successfully:", idToken);
           submitBorrowRequest(idToken);
         })
         .catch((error) => {
@@ -85,7 +85,7 @@ const BookDetails = () => {
           alert("Unable to fetch token. Please log in again.");
         });
     } else {
-      console.log("Token is available:", token);
+      // console.log("Token is available:", token);
       
       if (token.length < 10) {
         console.error("Invalid token: Token length is suspiciously short.");
@@ -98,7 +98,7 @@ const BookDetails = () => {
   };
 
   const submitBorrowRequest = (token) => {
-    console.log("Submitting borrow request with token:", token);
+    // console.log("Submitting borrow request with token:", token);
 
   
     if (!token) {
@@ -109,7 +109,7 @@ const BookDetails = () => {
 
     axios
       .post(
-        "http://localhost:5000/api/borrow",
+        "https://library-management-backend-beta.vercel.app/api/borrow",
         {
           email: user.email,
           bookId,
@@ -122,7 +122,7 @@ const BookDetails = () => {
         }
       )
       .then(() => {
-        console.log("Borrow request submitted successfully");
+        // console.log("Borrow request submitted successfully");
         alert("Book borrowed successfully!");
         setModalOpen(false);
         navigate("/borrowed-books");
