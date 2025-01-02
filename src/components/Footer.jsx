@@ -7,17 +7,16 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 py-10 px-4 shadow-lg">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
- 
+        
         <Fade bottom>
           <div>
             <h2 className="text-3xl font-extrabold mb-4 text-white">
-              Visa Navigator
+             BookHaven
             </h2>
             <p className="text-sm leading-relaxed text-white">
-              Your trusted portal for navigating visa requirements, applications, and tracking.
-              Simplify your journey with us!
+              Welcome to our BookHaven. Manage and browse books, track borrowed items, and much more, all in one place!
             </p>
-            <p className="text-xs mt-4 text-white">&copy; 2024 Visa Navigator. All rights reserved.</p>
+            <p className="text-xs mt-4 text-white">&copy; 2024 BookHaven. All rights reserved.</p>
           </div>
         </Fade>
 
@@ -37,34 +36,34 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/all-visas"
+                  href="/all-books"
                   className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
                 >
-                  All Visas
+                  All Books
                 </a>
               </li>
               <li>
                 <a
-                  href="/add-visa"
+                  href="/add-book"
                   className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
                 >
-                  Add Visa
+                  Add Book
                 </a>
               </li>
               <li>
                 <a
-                  href="/my-added-visas"
+                  href="/borrowed-books"
                   className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
                 >
-                  My Added Visas
+                  Borrowed Books
                 </a>
               </li>
               <li>
                 <a
-                  href="/my-visa-applications"
+                  href="/login"
                   className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
                 >
-                  My Visa Applications
+                  Login
                 </a>
               </li>
             </ul>
@@ -89,10 +88,10 @@ const Footer = () => {
               <li className="flex items-center">
                 <MdEmail className="mr-2 text-xl text-white" />
                 <a
-                  href="mailto:support@visanavigator.com"
+                  href="mailto:support@bookhaven.com"
                   className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
                 >
-                  support@visanavigator.com
+                  support@bookhaven.com
                 </a>
               </li>
             </ul>
@@ -139,7 +138,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center text-sm mt-8 border-t border-gray-300 pt-4 text-gray-500">
-        Made by the Visa Navigator Team
+        Designed with passion by the BookHaven Team
       </div>
     </footer>
   );
