@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
 
-  // Load theme on first render
+
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
@@ -85,6 +85,16 @@ const Navbar = () => {
           >
             Borrowed Books
           </NavLink>
+
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+            }
+          >
+           Dashboard
+          </NavLink>
+
         </div>
 
         <div className="hidden lg:flex items-center space-x-4">
@@ -169,6 +179,14 @@ const Navbar = () => {
             >
               Borrowed Books
             </NavLink>
+            <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+            }
+          >
+           Dashboard
+          </NavLink>
 
             {/* 🔘 Dark Mode Toggle on Mobile */}
             <button

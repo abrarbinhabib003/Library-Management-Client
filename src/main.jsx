@@ -13,7 +13,8 @@ import Categories from "./components/Categories";
 import BookCategories from "./components/BookCategories";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import Dashboard from './pages/Dashboard';
+import UpdateProfile from './pages/UpdateProfile';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
@@ -43,6 +44,19 @@ const router = createBrowserRouter([
       { path: "categories", element: <Categories /> },
       { path: "categories/:category", element: <BookCategories /> },
       { path: "*", element: <ErrorPage /> }, 
+
+      {
+        path: '/dashboard',
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
+        children: [
+          { path: 'update-profile', element: <UpdateProfile /> },
+         
+        ],
+      },
     ],
   },
 ]);
