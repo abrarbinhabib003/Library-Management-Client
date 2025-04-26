@@ -14,7 +14,7 @@ const ErrorPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 text-gray-800">
+    <div className="min-h-screen min-h-screen bg-base-100 text-base-content flex flex-col justify-center items-center bg-gray-100 text-gray-800">
 
       <div className="w-72 md:w-96">
         <Lottie

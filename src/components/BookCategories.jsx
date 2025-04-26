@@ -46,7 +46,7 @@ const BookCategories = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 min-h-screen bg-base-100 text-base-content">
       <h2 className="text-3xl font-bold text-center mb-6">
         Books in <span className="text-primary">{category}</span> Category
       </h2>

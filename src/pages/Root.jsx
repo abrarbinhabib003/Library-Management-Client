@@ -12,7 +12,7 @@ const Root = () => {
   const { user, logout } = useAuth(); 
 
   return (
-    <div>
+    <div className='min-h-screen bg-base-100 text-base-content'>
 
       <Navbar />
 

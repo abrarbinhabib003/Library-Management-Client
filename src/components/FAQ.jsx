@@ -9,7 +9,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-white py-12">
+    <div className="min-h-screen bg-base-100 text-base-content py-12">
       <h2 className="text-3xl font-bold text-center mb-6">FAQs</h2>
       <div className="max-w-4xl mx-auto">
         {faqs.map((faq, index) => (

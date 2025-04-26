@@ -72,7 +72,7 @@ const UpdateBook = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center py-8">
+      <div className="flex justify-center items-center py-8 min-h-screen bg-base-100 text-base-content">
         <div className="w-16 h-16 border-4 border-t-4 border-blue-500 rounded-full animate-spin"></div>
       </div>
     );

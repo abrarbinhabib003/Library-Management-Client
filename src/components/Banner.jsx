@@ -17,7 +17,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-12">
+    <div className=" py-12 min-h-screen bg-base-100 text-base-content ">
       <div className="max-w-5xl mx-auto text-center">
         {slides.map((slide, index) => (
           <div

@@ -6,8 +6,8 @@ const Categories = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-4">
-      <h1 className="text-center text-3xl font-bold mb-6 text-gray-800">Categories</h1>
+    <div className="p-4 min-h-screen bg-base-100 text-base-content">
+      <h1 className="text-center text-3xl font-bold mb-6 ">Categories</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {categories.map((category) => (
           <div

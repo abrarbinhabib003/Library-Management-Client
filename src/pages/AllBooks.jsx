@@ -46,7 +46,7 @@ const AllBooks = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 min-h-screen bg-base-100 text-base-content">
       <h1 className="text-3xl font-bold mb-4">All Books</h1>
 
       <div className="mb-4 flex items-center gap-4">

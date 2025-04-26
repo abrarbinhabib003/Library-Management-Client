@@ -6,7 +6,7 @@ import WhyChooseUs from '../components/WhyChooseUs'
 
 const Home = () => {
   return (
-    <div>
+    <div className='min-h-screen bg-base-100 text-base-content'>
 <Banner />
 <Categories />
 <WhyChooseUs />

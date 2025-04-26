@@ -5,31 +5,31 @@ import { Fade, Slide } from 'react-awesome-reveal';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-10 px-4 shadow-lg">
+    <footer className="min-h-screen bg-base-100 text-base-content  shadow-lg">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <Fade bottom>
           <div>
-            <h2 className="text-3xl font-extrabold mb-4 text-white">
-             BookHaven
+            <h2 className="text-3xl font-extrabold mb-4 text-black dark:bg-gray-100 dark:text-white">
+              BookHaven
             </h2>
-            <p className="text-sm leading-relaxed text-white">
+            <p className="text-sm leading-relaxed text-black dark:text-white">
               Welcome to our BookHaven. Manage and browse books, track borrowed items, and much more, all in one place!
             </p>
-            <p className="text-xs mt-4 text-white">&copy; 2024 BookHaven. All rights reserved.</p>
+            <p className="text-xs mt-4 text-black dark:text-white">&copy; 2024 BookHaven. All rights reserved.</p>
           </div>
         </Fade>
 
         <Slide left>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">
+            <h3 className="text-xl font-semibold mb-4 text-black dark:text-white">
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a
                   href="/"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   Home
                 </a>
@@ -37,7 +37,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/all-books"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   All Books
                 </a>
@@ -45,7 +45,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/add-book"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   Add Book
                 </a>
@@ -53,7 +53,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/borrowed-books"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   Borrowed Books
                 </a>
@@ -61,7 +61,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/login"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   Login
                 </a>
@@ -72,24 +72,24 @@ const Footer = () => {
 
         <Fade bottom>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">
+            <h3 className="text-xl font-semibold mb-4 text-black dark:text-white">
               Contact Us
             </h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center">
-                <MdPhone className="mr-2 text-xl text-white" />
+                <MdPhone className="mr-2 text-xl text-black dark:text-white" />
                 <a
                   href="tel:+123456789"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   +1 (234) 567-890
                 </a>
               </li>
               <li className="flex items-center">
-                <MdEmail className="mr-2 text-xl text-white" />
+                <MdEmail className="mr-2 text-xl text-black dark:text-white" />
                 <a
                   href="mailto:support@bookhaven.com"
-                  className="text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                  className="hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
                 >
                   support@bookhaven.com
                 </a>
@@ -101,7 +101,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-xl text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                className="text-xl hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
               >
                 <FaFacebookF />
               </a>
@@ -110,7 +110,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="text-xl text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                className="text-xl hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
               >
                 <FaTwitter />
               </a>
@@ -119,7 +119,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-xl text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                className="text-xl hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
               >
                 <FaInstagram />
               </a>
@@ -128,7 +128,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-xl text-white hover:text-gray-400 transition duration-300 ease-in-out"
+                className="text-xl hover:text-gray-400 transition duration-300 ease-in-out dark:hover:text-gray-300 text-black dark:text-white"
               >
                 <FaLinkedinIn />
               </a>
@@ -137,7 +137,7 @@ const Footer = () => {
         </Fade>
       </div>
 
-      <div className="text-center text-sm mt-8 border-t border-gray-300 pt-4 text-gray-500">
+      <div className="text-center text-sm mt-8 border-t border-gray-300 pt-4 text-black dark:text-white">
         Designed with passion by the BookHaven Team
       </div>
     </footer>
