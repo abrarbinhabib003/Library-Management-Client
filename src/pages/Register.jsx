@@ -105,7 +105,7 @@ const Register = () => {
           />
           <button
             type="submit"
-            className="w-full bg-lime-400 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+            className="w-full btn-outline border-2 py-2 rounded-md  focus:outline-none"
             disabled={isLoading}
           >
             {isLoading ? 'Loading...' : 'Register'}
@@ -114,7 +114,7 @@ const Register = () => {
 
         <button
           onClick={handleGoogleRegister}
-          className="w-full bg-orange-600 text-black py-2 mt-4 rounded-md hover:bg-red-600 focus:outline-none"
+          className="w-full btn-outline text-black py-2 mt-4 rounded-md border-2 focus:outline-none"
         >
           <div className="flex items-center justify-center space-x-2">
             <FaGoogle className="text-lg" />
