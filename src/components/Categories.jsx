@@ -12,7 +12,7 @@ const Categories = () => {
         {categories.map((category) => (
           <div
             key={category}
-            className="category-card bg-white shadow-xl border-4 rounded-lg p-6 flex flex-col items-center text-center transform transition-transform hover:scale-105 hover:shadow-2xl duration-300"
+            className="category-card border-2 shadow-xl border-4 rounded-lg p-6 flex flex-col items-center text-center transform transition-transform hover:scale-105 hover:shadow-2xl duration-300"
           >
             <div className="mb-4">
        

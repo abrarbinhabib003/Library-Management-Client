@@ -53,11 +53,11 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen  bg-base-100 text-base-content  py-10 px-4 animate__animated animate__fadeIn">
-      <div className="bg-white shadow-lg rounded-lg w-full sm:w-96 p-6 my-12">
+      <div className=" shadow-lg border-2 rounded-lg w-full sm:w-96 p-6 my-12">
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-4 animate__animated animate__fadeIn animate__delay-1s">
           Login to Your Account
         </h1>
-        <p className="text-center text-red-600 mb-6 animate__animated animate__fadeIn animate__delay-2s">
+        <p className="text-center text-gray-500   mb-6 animate__animated animate__fadeIn animate__delay-2s">
           Please enter your email and password to access your account.
         </p>
 

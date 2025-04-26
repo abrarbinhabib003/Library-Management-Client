@@ -70,11 +70,11 @@ const Register = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-base-100 text-base-content py-10 px-4">
-      <div className="bg-white shadow-lg rounded-lg w-full sm:w-96 p-6 my-12">
+      <div className="border-2  shadow-lg rounded-lg w-full sm:w-96 p-6 my-12">
         <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">
           Register Your Account
         </h1>
-        <p className="text-center text-red-600 mb-6">
+        <p className="text-center text-gray-500 mb-6">
           Please enter your details to create an account.
         </p>
 

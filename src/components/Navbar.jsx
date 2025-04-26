@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-base-100 text-base-content shadow-md">
+    <nav className="bg-base-100 text-base-content shadow-md  sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
           BookHaven
@@ -100,13 +100,13 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 text-white"
+                className="btn-outline px-4 py-2 rounded " 
               >
                 Log in
               </Link>
               <Link
                 to="/register"
-                className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 text-white"
+                className=" btn-outline"
               >
                 Register
               </Link>
@@ -125,7 +125,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={logout}
-                className="bg-red-600 px-4 py-2 rounded hover:bg-red-700 text-white"
+                className="btn-outline text-white"
               >
                 Logout
               </button>
@@ -183,13 +183,13 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 block text-center text-white mb-2"
+                    className="btn-outline block text-center  mb-2"
                   >
                     Log in
                   </Link>
                   <Link
                     to="/register"
-                    className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 block text-center text-white"
+                    className="btn-primary btn-outline block text-center text-white"
                   >
                     Register
                   </Link>
@@ -206,7 +206,7 @@ const Navbar = () => {
                   </div>
                   <button
                     onClick={logout}
-                    className="bg-red-600 px-4 py-2 rounded hover:bg-red-700 block text-center text-white"
+                    className="btn-outline block text-center text-white"
                   >
                     Logout
                   </button>
