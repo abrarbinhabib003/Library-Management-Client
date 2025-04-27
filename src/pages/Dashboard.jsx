@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import UpdateProfile from './UpdateProfile';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -24,6 +25,7 @@ const Dashboard = () => {
    
       <main className="flex-1 p-5">
         <h1 className="text-2xl font-semibold mb-4">Welcome, {user?.displayName || 'User'}!</h1>
+        <UpdateProfile/>
         <Outlet />
       </main>
     </div>

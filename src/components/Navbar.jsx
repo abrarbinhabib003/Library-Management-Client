@@ -129,13 +129,13 @@ const Navbar = () => {
                   alt={user.displayName || "User"}
                   className="w-10 h-10 rounded-full cursor-pointer"
                 />
-                <span className="absolute bottom-0 left-0 right-0 px-2 py-1 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="absolute bottom-0 left-0 right-0 px-2 py-1 text-sm  bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity">
                   {user.displayName}
                 </span>
               </div>
               <button
                 onClick={logout}
-                className="btn-outline text-white"
+                className="btn-outline text-black"
               >
                 Logout
               </button>
@@ -207,7 +207,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     to="/register"
-                    className="btn-primary btn-outline block text-center text-white"
+                    className="btn-primary btn-outline block text-center text-black"
                   >
                     Register
                   </Link>
@@ -224,7 +224,7 @@ const Navbar = () => {
                   </div>
                   <button
                     onClick={logout}
-                    className="btn-outline block text-center text-white"
+                    className="btn-outline block text-center text-black"
                   >
                     Logout
                   </button>
