@@ -15,7 +15,6 @@ const AddBook = () => {
   const handleAddBook = (e) => {
     e.preventDefault();
 
-
     if (!title || !author || !description || !imageLink || !category || !rating) {
       Swal.fire({
         title: 'Oops!',
@@ -47,7 +46,6 @@ const AddBook = () => {
         },
       })
       .then(() => {
-      
         setTitle('');
         setAuthor('');
         setDescription('');
@@ -92,7 +90,14 @@ const AddBook = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 min-h-screen bg-base-100 text-base-content rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto p-6 min-h-screen bg-base-100 text-base-content rounded-lg shadow-lg relative">
+      
+      {loading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <span className="loading loading-spinner loading-lg text-primary"></span>
+        </div>
+      )}
+
       <h1 className="text-3xl font-semibold text-center text-gray-700 mb-6">Add a New Book</h1>
 
       <form onSubmit={handleAddBook} className="space-y-4">

@@ -1,11 +1,12 @@
 
+
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { updateProfile } from 'firebase/auth';
+import { getAuth, updateProfile } from 'firebase/auth';
 import { toast } from 'react-toastify';
 
 const UpdateProfile = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const [name, setName] = useState(user?.displayName || '');
   const [photoURL, setPhotoURL] = useState(user?.photoURL || '');
   const [loading, setLoading] = useState(false);
@@ -14,13 +15,36 @@ const UpdateProfile = () => {
     e.preventDefault();
     setLoading(true);
 
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
+
+    if (!currentUser) {
+      toast.error("No user is logged in ❌");
+      setLoading(false);
+      return;
+    }
+
     try {
-      await updateProfile(user, {
+      await updateProfile(currentUser, {
         displayName: name,
         photoURL: photoURL,
       });
 
-      toast.success("Profile updated successfully ✅");
+
+      setUser({
+        ...user,
+        displayName: name,
+        photoURL: photoURL,
+      });
+
+      
+      toast.success(
+        <div className="flex items-center gap-3">
+          <img src={photoURL} alt="Profile" className="w-8 h-8 rounded-full" />
+          <span>Profile updated: <strong>{name}</strong> ✅</span>
+        </div>
+      );
+
     } catch (error) {
       console.error(error);
       toast.error("Failed to update profile ❌");
@@ -30,11 +54,11 @@ const UpdateProfile = () => {
   };
 
   return (
-    <form onSubmit={handleUpdate} className="space-y-4 max-w-md bg-base-100 p-6 rounded-xl shadow">
-      <h2 className="text-xl font-bold">Update Your Profile</h2>
+    <form onSubmit={handleUpdate} className="space-y-4 max-w-md bg-base-100 p-6 rounded-xl shadow mx-auto">
+      <h2 className="text-2xl font-bold text-center mb-4">Update Your Profile</h2>
 
       <div>
-        <label className="block mb-1">Name</label>
+        <label className="block mb-1 font-medium">Name</label>
         <input
           type="text"
           value={name}
@@ -45,7 +69,7 @@ const UpdateProfile = () => {
       </div>
 
       <div>
-        <label className="block mb-1">Photo URL</label>
+        <label className="block mb-1 font-medium">Photo URL</label>
         <input
           type="text"
           value={photoURL}

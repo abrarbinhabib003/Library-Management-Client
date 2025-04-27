@@ -1,7 +1,9 @@
-import React, { createContext, useState, useEffect, } from 'react';
+
+
+import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import firebaseApp from '../firebase/firebase.config';  
+import firebaseApp from '../firebase/firebase.config';
 
 const AuthContext = createContext();
 
@@ -11,10 +13,8 @@ export const AuthProvider = ({ children }) => {
     const auth = getAuth(firebaseApp);
 
     useEffect(() => {
-     
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
             if (user) {
-             
                 const token = await user.getIdToken();
                 try {
                     const res = await axios.post('https://library-management-backend-beta.vercel.app/api/auth/google-login', { idToken: token }, { withCredentials: true });
@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
 
-    
             const token = await user.getIdToken();
             await axios.post('https://library-management-backend-beta.vercel.app/api/auth/google-login', { idToken: token }, { withCredentials: true });
 
@@ -50,7 +49,6 @@ export const AuthProvider = ({ children }) => {
             const result = await signInWithEmailAndPassword(auth, email, password);
             const user = result.user;
 
-     
             const token = await user.getIdToken();
             await axios.post('https://library-management-backend-beta.vercel.app/api/auth/login', { email, password }, { withCredentials: true });
 
@@ -65,8 +63,7 @@ export const AuthProvider = ({ children }) => {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             const user = result.user;
 
-     
-            const res = await axios.post('https://library-management-backend-beta.vercel.app/api/auth/register', { name, email, password, photoURL }, { withCredentials: true });
+            await axios.post('https://library-management-backend-beta.vercel.app/api/auth/register', { name, email, password, photoURL }, { withCredentials: true });
 
             setUser(user);
         } catch (error) {
@@ -85,7 +82,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, googleLogin, emailPasswordLogin, emailPasswordRegister, logout }}>
+        <AuthContext.Provider value={{ user, loading, googleLogin, emailPasswordLogin, emailPasswordRegister, logout, setUser }}>
             {children}
         </AuthContext.Provider>
     );
