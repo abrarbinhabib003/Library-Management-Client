@@ -18,7 +18,7 @@ import UpdateProfile from './pages/UpdateProfile';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
-import { ThemeProvider } from "./components/ThemeContext";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,10 +63,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
+
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
-    </ThemeProvider>
+   
   </React.StrictMode>
 );

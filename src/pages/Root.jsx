@@ -5,31 +5,20 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DynamicTitle from '../components/DynamicTitle';
 
-
-
-
 const Root = () => {
   const { user, logout } = useAuth(); 
 
   return (
-    <div className='min-h-screen bg-base-100 text-base-content'>
-
+    <div className='flex flex-col min-h-screen bg-base-100 text-base-content'>
       <Navbar />
-
       <DynamicTitle />
-      <div className="main-content">
-   
+      
+      {/* Main content section */}
+      <div className="flex-grow">
         <Outlet />
       </div>
 
-  
-     
-     <Footer />
-     
-     
-     
-     
-     
+      <Footer />
     </div>
   );
 };

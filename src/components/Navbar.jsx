@@ -7,7 +7,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
 
-
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
@@ -26,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-base-100 text-base-content shadow-md  sticky top-0 z-50">
+    <nav className="bg-base-100 text-base-content shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
           BookHaven
@@ -87,17 +86,15 @@ const Navbar = () => {
           </NavLink>
 
           {user && (
-  <NavLink
-    to="/dashboard"
-    className={({ isActive }) =>
-      isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-    }
-  >
-    Dashboard
-  </NavLink>
-)}
-
-
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+              }
+            >
+              Dashboard
+            </NavLink>
+          )}
         </div>
 
         <div className="hidden lg:flex items-center space-x-4">
@@ -113,7 +110,7 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="btn-outline px-4 py-2 rounded " 
+                className="btn-outline px-4 py-2 rounded "
               >
                 Log in
               </Link>
@@ -126,15 +123,18 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <div className="relative group">
-                <img
-                  src={user.photoURL}
-                  alt={user.displayName || "User"}
-                  className="w-10 h-10 rounded-full cursor-pointer"
-                />
-                <span className="absolute bottom-0 left-0 right-0 px-2 py-1 text-sm  bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                  {user.displayName}
-                </span>
+              {/* Profile Picture and Username Link */}
+              <div className="flex items-center space-x-2">
+                <NavLink to="/dashboard" className="flex items-center space-x-2">
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName || "User"}
+                    className="w-10 h-10 rounded-full cursor-pointer"
+                  />
+                  <span className="text-sm font-semibold">
+                    {user.displayName}
+                  </span>
+                </NavLink>
               </div>
               <button
                 onClick={logout}
@@ -183,16 +183,15 @@ const Navbar = () => {
               Borrowed Books
             </NavLink>
             {user && (
-  <NavLink
-    to="/dashboard"
-    className={({ isActive }) =>
-      isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-    }
-  >
-    Dashboard
-  </NavLink>
-)}
-
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+                }
+              >
+                Dashboard
+              </NavLink>
+            )}
 
             {/* 🔘 Dark Mode Toggle on Mobile */}
             <button
@@ -207,7 +206,7 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="btn-outline block text-center  mb-2"
+                    className="btn-outline block text-center mb-2"
                   >
                     Log in
                   </Link>

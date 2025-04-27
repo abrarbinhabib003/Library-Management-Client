@@ -5,7 +5,7 @@ import { Fade, Slide } from 'react-awesome-reveal';
 
 const Footer = () => {
   return (
-    <footer className="min-h-screen bg-base-100 text-base-content  shadow-lg">
+    <footer className=" bg-base-100 text-base-content  shadow-lg">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <Fade bottom>
