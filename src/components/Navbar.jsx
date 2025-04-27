@@ -86,14 +86,17 @@ const Navbar = () => {
             Borrowed Books
           </NavLink>
 
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-            }
-          >
-           Dashboard
-          </NavLink>
+          {user && (
+  <NavLink
+    to="/dashboard"
+    className={({ isActive }) =>
+      isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+    }
+  >
+    Dashboard
+  </NavLink>
+)}
+
 
         </div>
 
@@ -179,14 +182,17 @@ const Navbar = () => {
             >
               Borrowed Books
             </NavLink>
-            <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
-            }
-          >
-           Dashboard
-          </NavLink>
+            {user && (
+  <NavLink
+    to="/dashboard"
+    className={({ isActive }) =>
+      isActive ? "text-blue-500 font-semibold" : "hover:text-blue-500"
+    }
+  >
+    Dashboard
+  </NavLink>
+)}
+
 
             {/* 🔘 Dark Mode Toggle on Mobile */}
             <button
